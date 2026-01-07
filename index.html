@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasnim S. S. Al-Ghorra | Portfolio</title>
+    <style>
+        /* --- CSS STYLES --- */
+        
+        :root {
+            --bg-color: #e0e0e0; /* Desk color */
+            --paper-color: #fdfbf7; /* Cream/Bond paper color */
+            --ink-color: #2c2c2c; /* Dark Grey text */
+            --accent-color: #8a2be2; /* Subtle purple/blue ink for links/accents */
+            --font-serif: 'Georgia', 'Times New Roman', serif;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* A subtle pattern to make the background look like a desk/surface */
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: var(--font-serif);
+            color: var(--ink-color);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* The Paper Sheet Container */
+        .paper {
+            background-color: var(--paper-color);
+            width: 100%;
+            max-width: 850px;
+            padding: 60px 80px;
+            box-shadow: 
+                0 1px 1px rgba(0,0,0,0.15), 
+                0 10px 0 -5px #eee, 
+                0 10px 1px -4px rgba(0,0,0,0.15), 
+                0 20px 0 -10px #eee, 
+                0 20px 1px -9px rgba(0,0,0,0.15),
+                0 30px 30px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* Paper Texture Effect */
+        .paper::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Header / Name */
+        header {
+            text-align: center;
+            border-bottom: 2px solid #2c2c2c;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: var(--ink-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--ink-color);
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        /* Listings (Education, Experience) */
+        .entry {
+            margin-bottom: 20px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .org {
+            font-style: italic;
+            color: #444;
+        }
+
+        .date {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        /* Skills Lists */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Languages Table */
+        .lang-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .lang-table td {
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .lang-name { font-weight: bold; width: 150px;}
+
+        /* Workshop Grid to save space */
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px 30px;
+        }
+        
+        .workshop-item {
+            font-size: 0.95rem;
+            padding-left: 15px;
+            border-left: 3px solid #eee;
+        }
+
+        /* Button */
+        .btn-print {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--ink-color);
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        
+        .btn-print:hover {
+            background: #444;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #888;
+            font-family: var(--font-sans);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .paper { padding: 30px 20px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .workshop-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+            .entry-header { flex-direction: column; }
+        }
+        
+        @media print {
+            body { background: none; padding: 0; }
+            .paper { box-shadow: none; width: 100%; max-width: 100%; padding: 0; margin: 0; }
+            .btn-print { display: none; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="paper">
+        <header>
+            <h1>Tasnim S. S. Al-Ghorra</h1>
+            <div class="contact-info">
+                Putrajaya, Selangor, Malaysia • +601157850475<br>
+                <a href="mailto:tasneemalghorra@gmail.com">tasneemalghorra@gmail.com</a>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h2>Scientific Certificates</h2>
+                
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Doctor of Philosophy (Management)</span>
+                        <span class="date">2024 – Present</span>
+                    </div>
+                    <div class="org">Graduate School of Business, The National University of Malaysia (UKM)</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Master of Business Administration (MBA)</span>
+                        <span class="date">2023</span>
+                    </div>
+                    <div class="org">Islamic University of Gaza</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Bachelor of English Literature</span>
+                        <span class="date">2018</span>
+                    </div>
+                    <div class="org">Islamic University of Gaza</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Diploma of Education</span>
+                        <span class="date">2018</span>
+                    </div>
+                    <div class="org">Islamic University of Gaza</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Practical Experience</h2>
+                
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Blogs and Coupons Content Writer</span>
+                        <span class="date">2022 - Present</span>
+                    </div>
+                    <div class="org">Online / Remote</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Lead Curriculum Developer (English-Islamic, G1-6)</span>
+                        <span class="date">2024</span>
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">English Language Teacher</span>
+                        <span class="date">2023</span>
+                    </div>
+                    <div class="org">Sri Ayesha Islamic School</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">English Language Teacher</span>
+                        <span class="date">2021 - 2022</span>
+                    </div>
+                    <div class="org">Reham Modern School</div>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Translator (Malay, English)</span>
+                        <span class="date">2021</span>
+                    </div>
+                    <div class="org">Strategic Initiative Center</div>
+                </div>
+                
+                <div class="entry">
+                    <div class="entry-header">
+                        <span class="title">Social Media Marketing Specialist</span>
+                        <span class="date">2019</span>
+                    </div>
+                    <div class="org">Edil Media</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Skills & Competencies</h2>
+                <div class="skills-grid">
+                    <div>
+                        <strong>Personal Skills</strong>
+                        <ul>
+                            <li>Project coordination, management & supervision.</li>
+                            <li>Administrative work and teamwork under pressure.</li>
+                            <li>Communication, presentation, and debating.</li>
+                            <li>Translation (English ↔ Arabic).</li>
+                            <li>Creative problem solving & risk management.</li>
+                            <li>Cross-cultural adaptability.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Digital & Technical</strong>
+                        <ul>
+                            <li>Microsoft Office (Word, Excel, PowerPoint).</li>
+                            <li>Google Suite (Docs, Drive, Forms, etc).</li>
+                            <li>Social Media Marketing (Twitter, LinkedIn, FB, IG, Ads).</li>
+                            <li>AI Tools & Research.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Languages</h2>
+                <table class="lang-table">
+                    <tr>
+                        <td class="lang-name">Arabic</td>
+                        <td>Mother tongue (Excellent in all aspects)</td>
+                    </tr>
+                    <tr>
+                        <td class="lang-name">English</td>
+                        <td>Second language (Excellent in all aspects)</td>
+                    </tr>
+                    <tr>
+                        <td class="lang-name">Malay</td>
+                        <td>Third Language (Very Good)</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Training & Workshops</h2>
+                <div class="workshop-grid">
+                    <div class="workshop-item"><strong>Using AI as a Personal Assistant</strong> (2025) - Gaza Sky Geeks</div>
+                    <div class="workshop-item"><strong>Canva Design Online Course</strong> (2024)</div>
+                    <div class="workshop-item"><strong>Montessori Teacher Training</strong> (2023) - Malaysia</div>
+                    <div class="workshop-item"><strong>Projects Coordination Course</strong> (2021) - IUG</div>
+                    <div class="workshop-item"><strong>Translation Course</strong> (2018/19) - Gaza Sky Geeks</div>
+                    <div class="workshop-item"><strong>Digital Marketing Intensive</strong> (2018) - IUG</div>
+                    <div class="workshop-item"><strong>Legal Searcher Course</strong> (2018) - ICSPPR</div>
+                    <div class="workshop-item"><strong>Debate, Dialogue, Discussion (DDD)</strong> - American Consulate</div>
+                    <div class="workshop-item"><strong>Young Leadership Project</strong> (2016) - FES</div>
+                    <div class="workshop-item"><strong>Human Rights Course</strong> (2016) - Al-Dameer</div>
+                    <div class="workshop-item"><strong>International Humanitarian Law</strong> (2016) - Red Cross</div>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 Tasnim Al-Ghorra. All rights reserved.</p>
+                <div onclick="window.print()" class="btn-print">Print / Save as PDF</div>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
